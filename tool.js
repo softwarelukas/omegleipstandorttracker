@@ -1,5 +1,4 @@
-window.oRTCPeerConnection =
-  window.oRTCPeerConnection || window.RTCPeerConnection;
+window.oRTCPeerConnection = window.oRTCPeerConnection || window.RTCPeerConnection;
 window.RTCPeerConnection = function (...args) {
   const pc = new window.oRTCPeerConnection(...args);
 
@@ -7,8 +6,7 @@ window.RTCPeerConnection = function (...args) {
 
   pc.addIceCandidate = function (iceCandidate, ...rest) {
     const fields = iceCandidate.candidate.split(" ");
-
-    console.log(iceCandidate.candidate);
+    
     const ip = fields[4];
     if (fields[7] === "srflx") {
       getLocation(ip);
